@@ -8,7 +8,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=15"
         },
         "likes": 80,
-        "is_liked" : true,
+        "is_liked": true,
         "created": "2022-06-25"
     },
     {
@@ -20,7 +20,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=10"
         },
         "likes": 120,
-        "is_liked" : false,
+        "is_liked": false,
         "created": "2022-06-03"
     },
     {
@@ -32,7 +32,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=20"
         },
         "likes": 78,
-        "is_liked" : true,
+        "is_liked": true,
         "created": "2022-05-15"
     },
     {
@@ -41,10 +41,10 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=29",
         },
         "likes": 56,
-        "is_liked" : false,
+        "is_liked": false,
         "created": "2022-04-03"
     },
     {
@@ -56,7 +56,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=29"
         },
         "likes": 95,
-         "is_liked" : false,
+        "is_liked": false,
         "created": "2022-03-05"
     },
     {
@@ -68,7 +68,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=33"
         },
         "likes": 95,
-         "is_liked" : true,
+        "is_liked": true,
         "created": "2022-02-02"
     },
     {
@@ -80,7 +80,7 @@ const posts = [
             "image": "https://unsplash.it/300/300?image=59"
         },
         "likes": 95,
-         "is_liked" : false,
+        "is_liked": false,
         "created": "2022-02-01"
     },
     {
@@ -88,11 +88,57 @@ const posts = [
         "content": "Ao! Che nun ce lo sai che io so l'unico post scritto in romanesco de tutta sta lista autogenerata! Dico e scrivo nummeri da quanno so nato, ce manca pure che me faccio un post autogennerato!",
         "media": "https://unsplash.it/600/400?image=554",
         "author": {
-            "name": "Mario Di Nio",
-            "image": "null"
+            "name": "Mario Draghi",
+            "image": "img/mario-draghi-scaled.jpg"
         },
         "likes": 95,
-         "is_liked" : true,
+        "is_liked": true,
         "created": "2021-12-11"
     }
 ];
+
+// Milestone 1 -
+// Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed, rimuovendo i contenuti statici.
+
+const postContainer = document.getElementById('container');
+
+let i = 0;
+
+// Creo un ciclo for che cicla per tutta la lunghezza dell'array ed inserisco i post in una variabile
+for (let i = 0; i < posts.length; i++) {
+
+    let postFeed = `
+        <div class="post">
+            <div class="post__header">
+                <div class="post-meta">
+                    <div class="post-meta__icon">
+                        <img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">
+                    </div>
+                    <div class="post-meta__data">
+                        <div class="post-meta__author">${posts[i].author.name}</div>
+                        <div class="post-meta__time">${posts[i].created}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="post__text">${posts[i].content}</div>
+            <div class="post__image">
+                <img src="${posts[i].media}" alt="">
+            </div>
+            <div class="post__footer">
+                <div class="likes js-likes">
+                    <div class="likes__cta">
+                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                            <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="like-button__label">Mi piace</span>
+                        </a>
+                    </div>
+                    <div class="likes__counter">
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+    postContainer.innerHTML += postFeed;
+
+};
