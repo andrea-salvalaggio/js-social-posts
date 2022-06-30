@@ -97,7 +97,7 @@ const posts = [
     }
 ];
 
-// Milestone 1 -
+// Milestone 1
 // Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed, rimuovendo i contenuti statici.
 
 const postContainer = document.getElementById('container');
@@ -142,3 +142,19 @@ for (let i = 0; i < posts.length; i++) {
     postContainer.innerHTML += postFeed;
 
 };
+
+// Milestone 2
+// Se clicchiamo sul tasto "Mi Piace" cambiamo il colore sia al bottone che al testo del bottone del relativo post.
+
+const likeButton = document.querySelector('.like-button');
+
+// Event Listener per il click del bottone
+likeButton.addEventListener('click', function () {
+
+    if (likeButton.classList.contains('like-button--liked')) {
+        likeButton.classList.remove('like-button--liked');
+    } else {
+        likeButton.classList.add('like-button--liked');
+    }
+
+});
